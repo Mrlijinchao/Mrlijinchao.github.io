@@ -154,6 +154,55 @@
     
     
     <article
+  id="post-反转链表"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/04/10/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/"
+    >反转链表</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/10/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time datetime="2022-04-10T01:24:55.000Z" itemprop="datePublished">2022-04-10</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>今天心血来潮想刷点题，于是就注册了牛客。没想到第一个题就是反转链表，啊这不是so easy吗。我火急火燎的就写完提交，没想到运行时间116ms,占用内存高达12948KB。代码我是用java写的，我看一些大神用Rust,C写竟然只花了2ms,300多KB,简直太牛了。后来我去看了一些题解把代码改进了一下，不用再去new空间，直接将原结点的指针反过来就ok了。</p>
+<h3 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">package p1;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class reverseLink &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		ListNode h = create_list();</span><br><span class="line">		//output(h);</span><br><span class="line">		ReverseList(h);</span><br><span class="line">	&#125;</span><br><span class="line">	public static ListNode <span class="function"><span class="title">create_list</span></span>() &#123;</span><br><span class="line">		Scanner input = new Scanner(System.<span class="keyword">in</span>);</span><br><span class="line">		int x=input.nextInt();</span><br><span class="line">		ListNode p=null,p1=null;</span><br><span class="line">		ListNode h=new ListNode(input.nextInt());</span><br><span class="line">		p1=h;</span><br><span class="line">		<span class="keyword">for</span>(int i=0;i&lt;x-1;i++) &#123;</span><br><span class="line">			p = new ListNode(input.nextInt());</span><br><span class="line">			p1.next = p;</span><br><span class="line">			p1=p;</span><br><span class="line">			p.next = null;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> h;</span><br><span class="line">	&#125;</span><br><span class="line">	public static void output(ListNode h) &#123;</span><br><span class="line">		<span class="keyword">while</span>(h!=null) &#123;</span><br><span class="line">			System.out.println(h.val);</span><br><span class="line">			h=h.next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    public static ListNode ReverseList(ListNode <span class="built_in">head</span>) &#123;</span><br><span class="line">    	ListNode p=null,temp=null;</span><br><span class="line">    	//最巧的就是这个循环了</span><br><span class="line">    	<span class="keyword">while</span>(<span class="built_in">head</span>!=null) &#123;</span><br><span class="line">    		//先让temp指向head.next节点,用来遍历链表</span><br><span class="line">    		temp = head.next;</span><br><span class="line">    		//head.next指针指向p</span><br><span class="line">    		head.next = p;</span><br><span class="line">    		//让p指向<span class="built_in">head</span>这个节点，这样下次循环的节点就可以和现在的节点连起来了</span><br><span class="line">    		p = <span class="built_in">head</span>;</span><br><span class="line">    		//这里再把刚刚temp保存的地址赋给<span class="built_in">head</span>，继续遍历下一个节点</span><br><span class="line">    		<span class="built_in">head</span> = temp;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">while</span>(p!=null) &#123;</span><br><span class="line">    		System.out.println(p.val);</span><br><span class="line">    		p=p.next;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="built_in">return</span> new ListNode(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">class ListNode &#123;</span><br><span class="line">    int val;</span><br><span class="line">    ListNode next = null;</span><br><span class="line"></span><br><span class="line">    ListNode(int val) &#123;</span><br><span class="line">        this.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/2022/04/10/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/image-20220410221114597.png" alt="image-20220410221114597"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-java编译器"
   class="article article-type-post"
   itemscope

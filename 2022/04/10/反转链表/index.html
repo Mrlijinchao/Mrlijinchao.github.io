@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Archives: 2022 |  Mr.li的小站</title>
+      <title>反转链表 |  Mr.li的小站</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -52,115 +52,163 @@
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-反转链表"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">2022</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2022" class="archive-year">2022</a>
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  反转链表
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/10/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time datetime="2022-04-10T01:24:55.000Z" itemprop="datePublished">2022-04-10</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">393</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">1 min</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-    <div class="archives">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/04/10/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="archive-article-date">
-  <time datetime="2022-04-10T01:24:55.000Z" itemprop="datePublished">04/10</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/04/10/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/"
-    >反转链表</a> 
-</h2>
- 
+    <div class="tocbot"></div>
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/04/03/java%E7%BC%96%E8%AF%91%E5%99%A8/" class="archive-article-date">
-  <time datetime="2022-04-02T17:24:55.000Z" itemprop="datePublished">04/03</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/04/03/java%E7%BC%96%E8%AF%91%E5%99%A8/"
-    >java编译器</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/03/26/python%E7%88%AC%E8%99%AB/" class="archive-article-date">
-  <time datetime="2022-03-26T07:11:26.000Z" itemprop="datePublished">03/26</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/03/26/python%E7%88%AC%E8%99%AB/"
-    >利用python爬取网页表情包</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/03/21/page/" class="archive-article-date">
-  <time datetime="2022-03-21T01:34:55.000Z" itemprop="datePublished">03/21</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/03/21/page/"
-    >Socket</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>今天心血来潮想刷点题，于是就注册了牛客。没想到第一个题就是反转链表，啊这不是so easy吗。我火急火燎的就写完提交，没想到运行时间116ms,占用内存高达12948KB。代码我是用java写的，我看一些大神用Rust,C写竟然只花了2ms,300多KB,简直太牛了。后来我去看了一些题解把代码改进了一下，不用再去new空间，直接将原结点的指针反过来就ok了。</p>
+<h3 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">package p1;</span><br><span class="line"></span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class reverseLink &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		ListNode h = create_list();</span><br><span class="line">		//output(h);</span><br><span class="line">		ReverseList(h);</span><br><span class="line">	&#125;</span><br><span class="line">	public static ListNode <span class="function"><span class="title">create_list</span></span>() &#123;</span><br><span class="line">		Scanner input = new Scanner(System.<span class="keyword">in</span>);</span><br><span class="line">		int x=input.nextInt();</span><br><span class="line">		ListNode p=null,p1=null;</span><br><span class="line">		ListNode h=new ListNode(input.nextInt());</span><br><span class="line">		p1=h;</span><br><span class="line">		<span class="keyword">for</span>(int i=0;i&lt;x-1;i++) &#123;</span><br><span class="line">			p = new ListNode(input.nextInt());</span><br><span class="line">			p1.next = p;</span><br><span class="line">			p1=p;</span><br><span class="line">			p.next = null;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> h;</span><br><span class="line">	&#125;</span><br><span class="line">	public static void output(ListNode h) &#123;</span><br><span class="line">		<span class="keyword">while</span>(h!=null) &#123;</span><br><span class="line">			System.out.println(h.val);</span><br><span class="line">			h=h.next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    public static ListNode ReverseList(ListNode <span class="built_in">head</span>) &#123;</span><br><span class="line">    	ListNode p=null,temp=null;</span><br><span class="line">    	//最巧的就是这个循环了</span><br><span class="line">    	<span class="keyword">while</span>(<span class="built_in">head</span>!=null) &#123;</span><br><span class="line">    		//先让temp指向head.next节点,用来遍历链表</span><br><span class="line">    		temp = head.next;</span><br><span class="line">    		//head.next指针指向p</span><br><span class="line">    		head.next = p;</span><br><span class="line">    		//让p指向<span class="built_in">head</span>这个节点，这样下次循环的节点就可以和现在的节点连起来了</span><br><span class="line">    		p = <span class="built_in">head</span>;</span><br><span class="line">    		//这里再把刚刚temp保存的地址赋给<span class="built_in">head</span>，继续遍历下一个节点</span><br><span class="line">    		<span class="built_in">head</span> = temp;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">while</span>(p!=null) &#123;</span><br><span class="line">    		System.out.println(p.val);</span><br><span class="line">    		p=p.next;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="built_in">return</span> new ListNode(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">class ListNode &#123;</span><br><span class="line">    int val;</span><br><span class="line">    ListNode next = null;</span><br><span class="line"></span><br><span class="line">    ListNode(int val) &#123;</span><br><span class="line">        this.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/2022/04/10/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/image-20220410221114597.png" alt="image-20220410221114597"></p>
+ 
+      <!-- reward -->
       
+      <div id="reword-out">
+        <div id="reward-btn">
+          Donate
+        </div>
+      </div>
       
     </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2022/04/10/%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
   </div>
-  
-  
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2022/04/03/java%E7%BC%96%E8%AF%91%E5%99%A8/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">java编译器</div>
+      </a>
+    
+  </nav>
 
   
+   
+    
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -309,6 +357,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
