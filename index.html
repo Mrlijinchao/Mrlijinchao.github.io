@@ -154,6 +154,58 @@
     
     
     <article
+  id="post-牛客第三题"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/04/16/%E7%89%9B%E5%AE%A2%E7%AC%AC%E4%B8%89%E9%A2%98/"
+    >牛客第三题</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/16/%E7%89%9B%E5%AE%A2%E7%AC%AC%E4%B8%89%E9%A2%98/" class="article-date">
+  <time datetime="2022-04-16T15:20:18.000Z" itemprop="datePublished">2022-04-16</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>今天又在牛客刷了一题，就单纯的想记录一下。</p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>将给出的链表中的节点每 k 个一组翻转，返回翻转后的链表<br>如果链表中的节点数不是 k 的倍数，将最后剩下的节点保持原样<br>你不能更改节点中的值，只能更改节点本身。</p>
+<p>数据范围：  2000 0≤n≤2000 ，  20001≤k≤2000 ，链表中每个元素都满足 10000≤val≤1000<br>要求空间复杂度 O(1)O(1)，时间复杂度 O(n)O(n)<br>例如：<br>给定的链表是 1→2→3→4→5<br>对于 k &#x3D; 2k&#x3D;2 , 你应该返回 2→1→4→3→5<br>对于 k &#x3D; 3k&#x3D;3 , 你应该返回 3→2→1→4→5</p>
+<h3 id="上码"><a href="#上码" class="headerlink" title="上码"></a>上码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">public static ListNode reverseKGroup (ListNode <span class="built_in">head</span>, int k) &#123;</span><br><span class="line">	/*</span><br><span class="line">	 * 我的大体思路就是每遍历k个节点就顺便放到栈里面，在栈里面把k个节点反转，</span><br><span class="line">	 * 然后再与后面的节点连起来</span><br><span class="line">	 */</span><br><span class="line">    // write code here</span><br><span class="line">	//如果链表为空或者k=1,就直接返回链表</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">head</span> == null||k==1) &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="built_in">head</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ListNode pre = <span class="built_in">head</span>;</span><br><span class="line">	ListNode temp=<span class="built_in">head</span>,temp1= new ListNode(0);</span><br><span class="line">	ListNode h =temp1,temp2=new ListNode(0);</span><br><span class="line">	//用数组建一个栈，用来存k个节点</span><br><span class="line">	ListNode[] keyNode = new ListNode[k];</span><br><span class="line">	int keyCount = 0;</span><br><span class="line">	int c=0;</span><br><span class="line">	<span class="keyword">for</span>(int i = 0;pre!=null;i++,keyCount++,c=i) &#123;</span><br><span class="line">		<span class="keyword">if</span>(i%k==0&amp;&amp;i!=0) &#123;</span><br><span class="line">			temp2.next = keyNode[keyCount-1];</span><br><span class="line">			temp = keyNode[keyCount-1].next;</span><br><span class="line">			<span class="keyword">for</span>(int j = keyCount-1;j&gt;=0;j--) &#123;</span><br><span class="line">				temp1.next = keyNode[j];</span><br><span class="line">				temp1 = keyNode[j];</span><br><span class="line">			&#125;</span><br><span class="line">			temp2 = keyNode[0];</span><br><span class="line">			pre = temp;</span><br><span class="line">			keyCount = 0;</span><br><span class="line">			keyNode[keyCount] = pre;</span><br><span class="line">			pre = pre.next;</span><br><span class="line">			<span class="built_in">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		//System.out.println(i);</span><br><span class="line">		keyNode[keyCount] = pre;</span><br><span class="line">		pre = pre.next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(c&lt;k) &#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="built_in">head</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ListNode pp=null;</span><br><span class="line">	<span class="keyword">if</span>(c==k) &#123;</span><br><span class="line">    	<span class="keyword">for</span>(int i = keyCount-1;i&gt;=0;i--) &#123;</span><br><span class="line">    		ListNode t = head.next;</span><br><span class="line">    		head.next = pp;</span><br><span class="line">    		pp = <span class="built_in">head</span>;</span><br><span class="line">    		<span class="built_in">head</span> = t;</span><br><span class="line">    	&#125;</span><br><span class="line">    	//output(pp);</span><br><span class="line">    	<span class="built_in">return</span> pp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(keyCount==k) &#123;</span><br><span class="line">	<span class="keyword">for</span>(int i = keyCount-1;i&gt;=0;i--) &#123;</span><br><span class="line">temp2.next = keyNode[i];</span><br><span class="line">temp2 = keyNode[i];</span><br><span class="line">	&#125;</span><br><span class="line">	temp2.next=null;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    	<span class="keyword">for</span>(int i = 0;i&lt;keyCount;i++) &#123;</span><br><span class="line">				temp2.next = keyNode[i];</span><br><span class="line">				temp2 = keyNode[i];</span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//output(h);</span><br><span class="line">	<span class="built_in">return</span> h.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h4><p><img src="/2022/04/16/%E7%89%9B%E5%AE%A2%E7%AC%AC%E4%B8%89%E9%A2%98/image-20220416233841731.png" alt="image-20220416233841731"></p>
+<h4 id="这让我很意外"><a href="#这让我很意外" class="headerlink" title="这让我很意外"></a>这让我很意外</h4><p><img src="/2022/04/16/%E7%89%9B%E5%AE%A2%E7%AC%AC%E4%B8%89%E9%A2%98/image-20220416233903516.png" alt="image-20220416233903516"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-AnswerPage"
   class="article article-type-post"
   itemscope
