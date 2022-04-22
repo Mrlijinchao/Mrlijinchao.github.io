@@ -154,6 +154,58 @@
     
     
     <article
+  id="post-链表相加"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/04/22/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%8A%A0/"
+    >链表相加</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/04/22/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%8A%A0/" class="article-date">
+  <time datetime="2022-04-22T04:34:00.000Z" itemprop="datePublished">2022-04-22</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>今天牛客这题感觉很有意思，我硬是改了好几次才通过，他那个测试数据是真的长啊。</p>
+<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p><img src="/2022/04/22/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%8A%A0/image-20220422130803980.png" alt="image-20220422130803980"></p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>1、先分别遍历两个链表，同时利用头插法逆转两个链表<br>2、通过一我们成功的把链表的尾变成了头，这时我们就可以再一个循环里<br>同时遍历两个链表，把他们对应的节点值相加。<br>3、我们要注意两值相加进位的临界值是 9 ，因此我们必须考虑(sum + rem1)&#x3D;9、<br>(sum + rem1)&lt;9、(sum + rem1)&gt;9这三种情况(sum表示两数相加的和，rem1表示进位数)<br>这样做可以得到时间复杂度为O(n),空间复杂度为O(n).</p>
+<h4 id="上码"><a href="#上码" class="headerlink" title="上码"></a>上码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">public static ListNode addInList (ListNode head1, ListNode head2) &#123;</span><br><span class="line">        // write code here</span><br><span class="line">        </span><br><span class="line">        ListNode h1 = head1,h2 = head2;</span><br><span class="line">        ListNode p1=null,p2=null;</span><br><span class="line">        ListNode p3 = null,pSum = null;</span><br><span class="line">        int k1=0,k2=0;</span><br><span class="line">    	<span class="keyword">while</span>(h1!=null) &#123;</span><br><span class="line">    		ListNode temp = h1.next;</span><br><span class="line">    		h1.next = p1;</span><br><span class="line">    		p1 = h1;</span><br><span class="line">    		h1 = temp;</span><br><span class="line">    		k1++;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">while</span>(h2!=null) &#123;</span><br><span class="line">    		ListNode temp = h2.next;</span><br><span class="line">    		h2.next = p2;</span><br><span class="line">    		p2 = h2;</span><br><span class="line">    		h2 = temp;</span><br><span class="line">    		k2++;</span><br><span class="line">    	&#125;</span><br><span class="line">    	int min = k1;</span><br><span class="line">    	<span class="keyword">if</span>(k1&gt;k2) &#123;</span><br><span class="line">    		ListNode temp = p1;</span><br><span class="line">    		p1 = p2;</span><br><span class="line">    		p2 = temp;</span><br><span class="line">    		min = k2;</span><br><span class="line">    	&#125;;</span><br><span class="line">        //sum为对应的两个数相加的和，rem和rem1用来存放进位数</span><br><span class="line">    	int <span class="built_in">sum</span>=0,rem=0,rem1=0;</span><br><span class="line">    	<span class="keyword">for</span>(int i=0;p2!=null;i++,p2=p2.next) &#123;</span><br><span class="line">    		<span class="keyword">if</span>(p1!=null&amp;&amp;p2!=null) &#123;</span><br><span class="line">    			<span class="built_in">sum</span> = p1.val+p2.val;</span><br><span class="line">    			<span class="keyword">if</span>((<span class="built_in">sum</span>+rem1)&gt;9) &#123;</span><br><span class="line">    				<span class="built_in">sum</span> = <span class="built_in">sum</span> + rem1 - 10;</span><br><span class="line">    				rem = 1;</span><br><span class="line">    			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>((<span class="built_in">sum</span>+rem1)==9)&#123;</span><br><span class="line">                    <span class="built_in">sum</span> = <span class="built_in">sum</span> + rem1;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>((<span class="built_in">sum</span>+rem1)&lt;9)&#123;</span><br><span class="line">                    <span class="built_in">sum</span> = <span class="built_in">sum</span> + rem1;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(<span class="built_in">sum</span>&gt;9&amp;&amp;(rem1!=1)) &#123;</span><br><span class="line">    				<span class="built_in">sum</span> = <span class="built_in">sum</span> - 10;</span><br><span class="line">    				rem = 1;</span><br><span class="line">    			&#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">    			pSum = new ListNode(<span class="built_in">sum</span>);</span><br><span class="line">    			pSum.next = p3;</span><br><span class="line">    			p3 = pSum;</span><br><span class="line">    			rem1 = rem;</span><br><span class="line">    			rem = 0;</span><br><span class="line">    			p1=p1.next;</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="keyword">if</span>(i&gt;=min) &#123;</span><br><span class="line">    			<span class="built_in">sum</span> = p2.val;</span><br><span class="line">    			<span class="keyword">if</span>((rem1+<span class="built_in">sum</span>)&gt;9) &#123;</span><br><span class="line">    				<span class="built_in">sum</span> = <span class="built_in">sum</span> + rem1 - 10;</span><br><span class="line">    				rem = 1;</span><br><span class="line">    			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>((<span class="built_in">sum</span>+rem1)==9)&#123;</span><br><span class="line">                    <span class="built_in">sum</span> = <span class="built_in">sum</span> + rem1;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>((<span class="built_in">sum</span>+rem1)&lt;9)&#123;</span><br><span class="line">                    <span class="built_in">sum</span> = <span class="built_in">sum</span> + rem1;</span><br><span class="line">                &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">    			pSum = new ListNode(<span class="built_in">sum</span>);</span><br><span class="line">    			pSum.next = p3;</span><br><span class="line">    			p3 = pSum;</span><br><span class="line">    			rem1 = rem;</span><br><span class="line">    			rem = 0;</span><br><span class="line">    		&#125;</span><br><span class="line">    		//System.out.println(i);</span><br><span class="line">    		</span><br><span class="line">    		</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">if</span>(rem1==1) &#123;</span><br><span class="line">			pSum = new ListNode(1);</span><br><span class="line">			pSum.next = p3;</span><br><span class="line">			p3 = pSum;</span><br><span class="line">    	&#125;</span><br><span class="line">    	//output(p3);</span><br><span class="line">    	</span><br><span class="line">    	<span class="built_in">return</span> p3;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p><img src="/2022/04/22/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%8A%A0/image-20220422130835069.png" alt="image-20220422130835069"></p>
+<p><img src="/2022/04/22/%E9%93%BE%E8%A1%A8%E7%9B%B8%E5%8A%A0/image-20220422130847234.png" alt="image-20220422130847234"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-牛客第三题"
   class="article article-type-post"
   itemscope
